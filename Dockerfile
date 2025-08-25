@@ -38,7 +38,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=deps    /app/node_modules ./node_modules
 COPY package.json ./
-COPY next.config.mjs ./  # если есть
+COPY next.config.mjs ./
 
 ENV PORT=3000
 EXPOSE 3000
