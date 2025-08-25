@@ -1,7 +1,7 @@
 const language = {
   info: {
-    country_code: "RU",
-    lang_name: "Русакий"
+    country_code: "RUS",
+    lang_name: "Русский"
   },
   site: {
     description: "Простой и легкий веб-интерфейс Litebans."
