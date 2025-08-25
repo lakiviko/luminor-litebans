@@ -20,5 +20,6 @@ export const ConsoleAvatar = ({
     width={size ?? 32}
     height={size ?? 32}
     className={cn("mx-auto rounded-sm", className)}
+    unoptimized
   />
 )

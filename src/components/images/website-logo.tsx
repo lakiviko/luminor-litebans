@@ -18,6 +18,7 @@ export const WebsiteLogo = ({ height, width, className }: WebsiteLogoProps) => {
       height={height}
       width={width}
       className={className}
+      unoptimized
     />
   )
 }
