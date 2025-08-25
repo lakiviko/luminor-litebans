@@ -1,13 +1,13 @@
 export const siteConfig = {
-  title: "Next Litebans",
+  title: "Luminor. Стена позора",
   logo: "/logo.webp",
   favicon: "/logo.webp",
   languages: {
     available: [
+      "ru",
       "en",
-      "es",
     ],
-    default: "en",
+    default: "ru",
   },
   console: {
     name: "Console", // Just for filter badge
