@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: "Luminor. Стена позора",
+  title: "Стена позора Luminor",
   logo: "/logo.webp",
   favicon: "/logo.webp",
   languages: {
@@ -16,7 +16,7 @@ export const siteConfig = {
     body: "/console-body.webp",
     bust: "/console-bust.webp",
   },
-  defaultPlayerLookup: "YoSoyVilla",
+  defaultPlayerLookup: "lakiviko",
   // When enabled, body and bust images will show a steve skin
   bedrock: {
     enabled: false,
@@ -28,126 +28,126 @@ export const siteConfig = {
       main: {
         // Placeholders: {total}, {bans}, {mutes}, {kicks}, {warns}
         description: `
-        next-litebans punishment web interface.
+Стена позора Luminor
 
-        Total punishments: {total}
+Всего вынесено наказаний: {total}
 
-          🚫 Bans: {bans}
-          🔇 Mutes: {mutes}
-          ⚠️ Warns: {warns}
-          ❌ Kicks: {kicks}
-        `
+🚫 Баны: {bans}
+🔇 Муты: {mutes}
+⚠️ Варны: {warns}
+❌ Кики: {kicks}
+`
       },
       history: {
         // Placeholders: {total}, {bans}, {mutes}, {kicks}, {warns}
         description: `
-        Total punishments: {total}
+Всего вынесено наказаний: {total}
 
-          🚫 Bans: {bans}
-          🔇 Mutes: {mutes}
-          ⚠️ Warns: {warns}
-          ❌ Kicks: {kicks}
+🚫 Баны: {bans}
+🔇 Муты: {mutes}
+⚠️ Варны: {warns}
+❌ Кики: {kicks}
         `
       },
       player: {
         // Placeholders: {name}, {total}, {bans}, {mutes}, {kicks}, {warns}
         description: `
-        {name}'s punishments.
+Наказания {name}.
 
-        Total punishments: {total}
+Всего вынесено наказаний: {total}
 
-          🚫 Bans: {bans}
-          🔇 Mutes: {mutes}
-          ⚠️ Warns: {warns}
-          ❌ Kicks: {kicks}
+🚫 Баны: {bans}
+🔇 Муты: {mutes}
+⚠️ Варны: {warns}
+❌ Кики: {kicks}
         `,
         bans: {
           description: `
-          {name}'s bans.
+Баны {name}.
 
-          Total bans: {total}
+Всего банов: {total}
           `,
         },
         mutes: {
           description: `
-          {name}'s mutes.
+Муты {name}.
 
-          Total mutes: {total}
+Всего мутов: {total}
           `,
         },
         warns: {
           description: `
-          {name}'s warns.
+Варны {name}.
 
-          Total warns: {total}
+Всего варнов: {total}
           `,
         },
         kicks: {
           description: `
-          {name}'s kicks.
+Кики {name}.
 
-          Total kicks: {total}
+Всего киков: {total}
           `,
         },
       },
       bans: {
         // Placeholders: {total}
-        description: "Total bans: {total}"
+        description: "Всего банов: {total}"
       },
       mutes: {
         // Placeholders: {total}
-        description: "Total mutes: {total}"
+        description: "Всего мутов: {total}"
       },
       warns: {
         // Placeholders: {total}
-        description: "Total warns: {total}"
+        description: "Всего варнов: {total}"
       },
       kicks: {
         // Placeholders: {total}
-        description: "Total kicks: {total}"
+        description: "Всего киков: {total}"
       },
     },
     punishments: {
       ban: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {duration}, {server}
         description: `
-        👤 User: {name}
-        👮 Staff: {staff}
+👤 Игрок: {name}
+👮 Staff: {staff}
 
-        📜 Reason: {reason}
-        🕒 Date: {time}
-        ⌛ Duration: {duration}
+📜 Причина: {reason}
+🕒 Дата: {time}
+⌛ Длительность: {duration}
         `
       },
       mute: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {duration}, {server}
         description: `
-        👤 User: {name}
-        👮 Staff: {staff}
+👤 Игрок: {name}
+👮 Staff: {staff}
 
-        📜 Reason: {reason}
-        🕒 Date: {time}
-        ⌛ Duration: {duration}
+📜 Причина: {reason}
+🕒 Дата: {time}
+⌛ Длительность: {duration}
         `
       },
       warn: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {server}
         description: `
-        👤 User: {name}
-        👮 Staff: {staff}
+👤 Игрок: {name}
+👮 Staff: {staff}
 
-        📜 Reason: {reason}
-        🕒 Date: {time}
+📜 Причина: {reason}
+🕒 Дата: {time}
         `
       },
       kick: {
         // Placeholders: {name}, {staff}, {reason}, {time}, {server}
         description: `
-        👤 User: {name}
-        👮 Staff: {staff}
+👤 Игрок: {name}
+👮 Staff: {staff}
 
-        📜 Reason: {reason}
-        🕒 Date: {time}
+📜 Причина: {reason}
+🕒 Дата: {time}
         `
       }
     }
