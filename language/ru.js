@@ -37,7 +37,7 @@ const language = {
     home: {
       title: "Главная",
       // Placeholders: {total}, {bans}, {mutes}, {kicks}, {warns}
-      subtitle: "Правосудие достанет каждого!"
+      subtitle: "Правосудие настигнет каждого!"
     },
     history: {
       title: "Инстория",
