@@ -1,48 +1,56 @@
 # syntax=docker/dockerfile:1
-
 ARG NODE_VERSION=20
 
-# 1) Устанавливаем зависимости npm (быстро кешируется)
+# 1) deps — установка зависимостей npm
 FROM node:${NODE_VERSION}-bookworm-slim AS deps
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    openssl ca-certificates tzdata && \
+    ca-certificates tzdata openssl libssl3 && \
     rm -rf /var/lib/apt/lists/*
 COPY package.json package-lock.json ./
 RUN npm ci
 
-# 2) Сборка приложения + генерация Prisma Client
+# 2) builder — prisma generate + сборка Next.js
 FROM node:${NODE_VERSION}-bookworm-slim AS builder
 WORKDIR /app
 ENV NODE_ENV=production
+# OpenSSL 3 нужен уже на этапе generate
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates tzdata openssl libssl3 && \
+    rm -rf /var/lib/apt/lists/*
 COPY --from=deps /app/node_modules ./node_modules
-# копируем исходники
 COPY . .
-# Генерируем Prisma Client (нужен DATABASE_URL на этапе build только если вы делаете db pull/migrate)
+
+# Подсказываем Prisma использовать library engine
+ENV PRISMA_CLIENT_ENGINE_TYPE=library
 ENV PRISMA_CLI_QUERY_ENGINE_TYPE_LIBRARY=1
+
+# ВАЖНО: generate выполняется на bookworm с libssl3 → бинари под openssl-3.0.x
 RUN npx prisma generate
-# Отключаем телеметрию Next (по желанию)
-ENV NEXT_TELEMETRY_DISABLED=1
+
 # Сборка Next.js
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-# 3) Рантайм образ
+# 3) runner — чистый рантайм
 FROM node:${NODE_VERSION}-bookworm-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-# Непривилегированный пользователь
-RUN useradd -m nextjs
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates tzdata openssl libssl3 && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/* && \
+    useradd -m nextjs
 
-# Копируем только необходимое для запуска
+# Копируем только нужное
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
-COPY --from=deps    /app/node_modules ./node_modules
+# Берём node_modules из builder (внутри уже лежит сгенерированный Prisma client)
+COPY --from=builder /app/node_modules ./node_modules
 COPY package.json ./
-COPY next.config.mjs ./
+# Если есть next.config.*, при необходимости добавь:
+# COPY next.config.mjs ./
 
 ENV PORT=3000
 EXPOSE 3000
-
 USER nextjs
-# В package.json должен быть "start": "next start -p $PORT"
 CMD ["npm", "run", "start"]
